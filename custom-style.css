@@ -6,13 +6,13 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
     text-align: center;
-    margin: 250px 350px;
+    margin: 165px 350px;
     font-family: 'Comic Neue', cursive;
     color: #fff;
-    font-size: 24px
+    font-size: 24px;
 }
 
-body::before{
+body::before {
     content: "";
     position: absolute;
     top: 0;
@@ -22,16 +22,104 @@ body::before{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-h1{
+h1 {
     font-weight: 600;
 }
 
-h3{
+h2 {
+    color: #fff;
+}
+
+h3 {
     font-weight: 400;
 }
 
 
-h1, h3, a, button{
+
+h1,
+h2,
+h3,
+a,
+button {
     position: relative;
 }
 
+
+button {
+    border: 1px solid #fff;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 12px 14px;
+    margin: 6px;
+
+}
+
+button:hover {
+    background-color: #1c3a5b;
+    border-color: #1c3a5b;
+    color: #fff;
+    transition: all 0.1s ease-in;
+}
+
+a {
+    /* text-decoration: none; */
+    font-weight: 400;
+    color: #f7e4a4;
+}
+
+a:hover {
+    color: #fff;
+    transition: all 0.1s ease-in;
+}
+
+.rooms-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rooms-list div {
+    margin: 40px;
+    padding: 50px;
+}
+
+.rooms-list img {
+    width: 250px;
+}
+
+.room-one,
+.room-two {
+    width: 350px;
+    background-color: #ffffff;
+    padding-top: 50px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.room-cards button {
+    color: #fff;
+    background-color: #1c3a5b;
+    border: 0;
+    border: 1px solid #ffffff;
+}
+
+.room-cards button:hover{
+    transition: all 0.1s ease-in;
+    background-color: #fff;
+    color: #1c3a5b;
+    border: 1px solid #1c3a5b;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+      max-height: 160px;
+      margin: 100px;
+    }
+    body::before{
+        height: 940px;
+    }
+    a{
+        padding-bottom: 28px;
+    }
+  }
