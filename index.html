@@ -13,14 +13,26 @@
     <link rel="preload" href="https://widget-stage.skipperhospitality.com/style.css" as="style" crossorigin />
     <link rel="preconnect" href="https://cash-api-stage.skipperhospitality.com" />
 
+    <link rel="stylesheet" href="/custom-style.css">
 </head>
 
 <body>
+
     <h1>Skipper Hotel</h1>
     <h3>Your next favourite holiday spot!</h3>
 
     <button id="global">Book Now</button>
     <div id="skipper-target"></div>
+    <button href="?sbe_internalLink&sbe_startPage=rooms&sbe_hotelId=USMORDPD&sbe_rooms=1&sbe_roomCode=A1K&sbe_stayLength=1
+     ">Deluxe King Room</button>
+    <button
+        href="?sbe_internalLink&sbe_startPage=rooms&sbe_hotelId=USMORDPD&sbe_rooms=1&sbe_roomCode=B1K&sbe_stayLength=1">Superior
+        King Room</button>
+    <br>
+    <a href="?sbe_internalLink&sbe_startPage=reservations&sbe_hotelId=USMORDPD
+    ">My Reservations</a>
+
+
     <script>
         // initializing Skipper widget with configuration
         if (window.initSkipper) {
@@ -38,14 +50,6 @@
         }
     </script>
 
-    <button href="?sbe_internalLink&sbe_startPage=rooms&sbe_hotelId=USMORDPD&sbe_rooms=1&sbe_roomCode=A1K&sbe_stayLength=1
-">Deluxe King Room</button>
-    <button
-        href="?sbe_internalLink&sbe_startPage=rooms&sbe_hotelId=USMORDPD&sbe_rooms=1&sbe_roomCode=B1K&sbe_stayLength=1">Superior
-        King Room</button>
-
-    <a href="?sbe_internalLink&sbe_startPage=reservations&sbe_hotelId=USMORDPD
-">Reservations</a>
 </body>
 
 </html>
