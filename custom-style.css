@@ -2,7 +2,7 @@
 
 
 body {
-    background-image: url("/assets/skipper-hotel.jpg");
+    background-image: url("./assets/skipper-hotel.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     text-align: center;
