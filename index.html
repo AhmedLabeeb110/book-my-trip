@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skipper Hotel</title>
+    <script>
+        "use strict"; var q = Object.defineProperty; var G = (i, r, l) => r in i ? q(i, r, { enumerable: !0, configurable: !0, writable: !0, value: l }) : i[r] = l; var f = (i, r, l) => (G(i, typeof r != "symbol" ? r + "" : r, l), l); (function (i) { typeof define == "function" && define.amd ? define(i) : i() })(function () { "use strict"; class i { constructor(n = !0) { f(this, "_eventMap"); f(this, "_recalculateExport"); f(this, "_exports"); f(this, "_addTimestamps"); this._eventMap = new Map, this._recalculateExport = !0, this._exports = [], this._addTimestamps = n } track(n, a) { this._addTimestamps && (a.eventTimestamp = new Date().toISOString()), this._eventMap.set(n, a), this._recalculateExport = !0 } getEvent(n) { return this._eventMap.get(n) } export() { if (this._recalculateExport) { this._exports = []; const n = this._eventMap[Symbol.iterator](); for (const [a, u] of n) this._exports.push({ eventName: a, payload: u }) } return this._recalculateExport = !1, this._exports } clear() { this._recalculateExport = !0, this._exports = [], this._eventMap.clear() } } const r = { WIDGET_LOAD_TIME: "Widget Load Time", INITIAL_INTERACTION_TIME: "Initial Interaction Time", SCRIPT_INSERTION_TIME: "Script Insertion Time" }, l = 3e4, A = 700, R = 1200, X = 500, h = new i, C = Date.now(); let S, I, v, d, _ = !0, M = !1, p = !1, c = null, g = null, k = !1, m = null; window.initSkipper = z; function $(t, n) { const { primaryColor: a, accentColor: u, primaryFont: y, secondaryFont: E } = n, x = '<div id="skipper-interstitial-container"><svg id="interstitial-animation" width="48" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="cw-circle-container"><circle id="circle-fill" cx="24" cy="8" r="8"/><circle id="circle-stroke" cx="8" cy="8" r="7" stroke-width="2"/></g></svg><p id="message">Loading...</p></div>', L = `@media only screen and (min-width: 768px) {#skipper-interstitial-container {width: 500px !important; }} #circle-stroke{animation: ltor 1.2s ease-in-out infinite;animation-direction: alternate;stroke: ${a || "#2563EB"}}#circle-fill{animation: rtol 1.2s ease-in-out infinite;animation-direction: alternate;fill: ${a || "#2563EB"}}@keyframes ltor{20%{transform: translateX(-4px)}50%{transform: translateX(20px)}80%{transform: translateX(-4px)}}@keyframes rtol{20%{transform: translateX(4px)}50%{transform: translateX(-20px)}80%{transform: translateX(4px)}}.cash-widget-overlay-container:before{content: "";width: 100%;height: 100%;background-color: #00000080;position: fixed;bottom: 0;left: 0;right: 0;top: 0;z-index: 99}`; document.getElementById(t).insertAdjacentHTML("afterend", x), c = document.getElementById("skipper-interstitial-container"), c.style = `position: fixed; height: 100vh; background: #FFFFFF; z-index: 2147483647; overflow: auto; display: initial; width: 100vw; width: -webkit-fill-available; width: -moz-available; width: stretch; top: 0px; left: initial; right: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: ${y}, ${E}, 'Verdana'; text-align: center;`; const T = document.createElement("style"); T.textContent = L, document.head.append(T), document.body.classList.add("cash-widget-overlay-container") } function W() { const t = new URL(window.location.href); return t.searchParams.get("sbe_openBE") === "true" || t.searchParams.get("openBE") === "true" } const j = (t, n = {}) => () => { p || (I = Date.now(), h.track(r.INITIAL_INTERACTION_TIME, { interactionTime: I - C }), $(t, n)), p = !0, k = !0 }; function D() { var t; p && window.openWidget && M && _ && ((t = c == null ? void 0 : c.remove) == null || t.call(c), window.openWidget()) } function z(t) { const { target: n, style: a, fallbackUrl: u, isDynamic: y = !1, dynamicQueryInterval: E = X } = t, { targetClasses: x = [], targetIds: L = [] } = t, b = j(n, a); W() && (setTimeout(() => { const e = new CustomEvent("openBE"); document.dispatchEvent(e) }), setTimeout(() => { d ? p = !0 : b() }, A)); const T = () => { v = Date.now(); const e = document.createElement("script"), s = "stage"; { let o; switch (s) { case "production": o = "widget-stage.skipperhospitality.com"; break; case "stage": o = "widget-stage.skipperhospitality.com"; break; default: o = "widget-dev.skipperhospitality.com"; break }e.src = `https://${o}/cash-sdk.umd.js` } e.type = "module", e.addEventListener("load", () => { k = !1, d = Date.now(), h.track(r.WIDGET_LOAD_TIME, { loadTime: d - v }); const o = new CustomEvent("skipper-hydrated", { bubbles: !0 }); e.dispatchEvent(o) }), setTimeout(() => { d || (_ = !1, setTimeout(() => { _ = !0, D() }, R)) }, A), setTimeout(() => { p && k && u && window.open(u, "_blank") }, l), document.head.appendChild(e) }; document.addEventListener("DOMContentLoaded", () => { S = Date.now() }); const N = new AbortController, H = e => { document.addEventListener(e, () => { N.abort(), T() }, { once: !0, signal: N.signal }) };["mousedown", "scroll", "keydown", "touchstart", "mousemove", "openBE"].forEach(e => H(e)), document.addEventListener("skipper-hydrated", async () => { window._initSkipper && await window._initSkipper(t, g) }, { once: !0 }), document.addEventListener("skipper-initialized", () => { m && clearInterval(m), w.forEach(e => { e.removeEventListener("click", O) }), M = !0, window.primeTracking(h.export(), { pageLoadTime: C, initialUserInteractionTime: I, skipperScriptInsertionTime: v, skipperScriptLoadedTime: d, DOMContentLoadedTime: S }), D(), h.clear() }, { once: !0 }); function O(e) { g = e.currentTarget ? e.currentTarget : g, m && clearInterval(m), e.preventDefault(), b() } const B = (e, s) => { let o = []; return typeof e == "string" && (e = [e]), e.length && (o = Array.from(document.querySelectorAll(e.map(V => `${s === "class" ? "." : "#"}${V}`).join(",")))), o }, U = ["[data-skipper-internal-link]", "[href*=sbe_internalLink]"], F = () => { var e; return new Set([...B(x, "class"), ...B(L, "id"), ...((e = document.querySelectorAll(U.join(","))) == null ? void 0 : e.values()) || []]) }, P = e => e.addEventListener("click", O), w = F(); for (const e of w) P(e); y && typeof E == "number" && (m = setInterval(() => { const e = F(); for (const s of w) e.delete(s); for (const s of e) w.add(s), P(s) }, E)) } });
+    </script>
+    <link rel="preload" href="https://widget-stage.skipperhospitality.com/cash-sdk.umd.js" as="script" crossorigin />
+    <link rel="preload" href="https://widget-stage.skipperhospitality.com/site-base.css" as="style" crossorigin />
+    <link rel="preload" href="https://widget-stage.skipperhospitality.com/style.css" as="style" crossorigin />
+    <link rel="preconnect" href="https://cash-api-stage.skipperhospitality.com" />
+
+</head>
+
+<body>
+    <h1>Skipper Hotel</h1>
+    <h3>Your next favourite holiday spot!</h3>
+
+    <button id="global">Book Now</button>
+    <div id="skipper-target"></div>
+    <script>
+        // initializing Skipper widget with configuration
+        if (window.initSkipper) {
+            window.initSkipper({
+                target: "skipper-target",
+                targetIds: ["global"],
+                targetClasses: ["other-reserve-buttons"],
+                hotelId: "USMORDPD", // not needed if groupId or brandId is provided
+                style: {
+                    primaryColor: "#1B3A5C",
+                    accentColor: "#7F9580",
+                    primaryFont: "Comic Sans MS",
+                },
+                fallbackUrl: "https://<enter-fallback-CRS-or-PMS-site-here>",
+            });
+        }
+    </script>
+</body>
+
+</html>
