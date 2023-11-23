@@ -123,3 +123,10 @@ a:hover {
         padding-bottom: 28px;
     }
   }
+
+
+  @media screen and (min-width: 1800px) {
+    body::before{
+        height: 1200px;
+    }
+  }
